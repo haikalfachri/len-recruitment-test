@@ -51,6 +51,16 @@ func (ur *StudentRepositoryImp) GetById(id string) (models.Student, error) {
 func (ur *StudentRepositoryImp) Update(studentRequest models.StudentRequest, id string) (models.Student, error) {
 	student, err := ur.GetById(id)
 
+	if studentRequest.Name != student.Name {
+		student.Name = studentRequest.Name
+	}
+	if studentRequest.SID != student.SID{
+		student.SID = studentRequest.SID
+	}
+	if studentRequest.Major != student.Major{
+		student.Major = studentRequest.Major
+	}
+
 	if err != nil {
 		return models.Student{}, err
 	}

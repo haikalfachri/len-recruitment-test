@@ -52,6 +52,19 @@ func (ur *BookRepositoryImp) GetById(id string) (models.Book, error) {
 func (ur *BookRepositoryImp) Update(bookRequest models.BookRequest, id string) (models.Book, error) {
 	book, err := ur.GetById(id)
 
+	if bookRequest.Title != book.Title {
+		book.Title = bookRequest.Title
+	}
+	if bookRequest.Author != book.Author{
+		book.Author = bookRequest.Author
+	}
+	if bookRequest.Quantity != book.Quantity{
+		book.Quantity = bookRequest.Quantity
+	}
+	if bookRequest.Storage != book.Storage{
+		book.Storage = bookRequest.Storage
+	}
+	
 	if err != nil {
 		return models.Book{}, err
 	}
